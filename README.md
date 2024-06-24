@@ -27,3 +27,12 @@
 <p>&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api?username=harshucodes-git&show_icons=true&locale=en" alt="harshucodes-git" /></p>
 
 <p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=harshucodes-git&" alt="harshucodes-git" /></p>
+
+<a href="https://github.com/Ashutosh00710/github-readme-activity-graph" title="Go to Source">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=harshuCodes-git&theme=react-dark" />
+    <source media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=harshuCodes-git&bg_color=ffffff&color=708090&line=24292e&point=24292e&area=true&hide_border=true" />
+    <img width="100%" src="https://github-readme-activity-graph.vercel.app/graph?username=harshuCodes-git&bg_color=ffffff&color=708090&line=24292e&point=24292e&area=true&hide_border=true" alt="harshuCodes-git's contribution graph" />
+  </picture>
+</a>
+
