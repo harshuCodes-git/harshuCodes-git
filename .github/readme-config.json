@@ -1,0 +1,39 @@
+{
+  "max_prs": 15,
+  "max_repos": 10,
+  "exclude_prs": [
+    "https://github.com/vidyalai/interview-challenge-1/pull/18",
+    "https://github.com/Akhila-2/New-project-/pull/1",
+    "https://github.com/appanasamanvitha/DarshanEase-FullStack/pull/1",
+    "https://github.com/Aspireve/ESD-SEM6/pull/1",
+    "https://github.com/hiteshchoudhary/open-source-contribution/pull/367",
+    "https://github.com/hiteshchoudhary/open-source-contribution/pull/324"
+  ],
+  "exclude_contribution_repos": [],
+  "featured_repos": [
+    "padho-ai",
+    "Webify-AI",
+    "IntelliTrip",
+    "MindCureAI",
+    "Purple-Box-CRM"
+  ],
+  "exclude_repos": [
+    "job_mail_automation",
+    "github-contribution-commit",
+    "Vaishnavi-Mudaliar-portfolio",
+    "harshuCodes-git.github.io"
+  ],
+  "exclude_repo_patterns": [
+    "task"
+  ],
+  "pr_titles": {
+    "https://github.com/neetcode-gh/leetcode/pull/3299": "C++ solution for 1463. Cherry Pickup II",
+    "https://github.com/VCET-Hacks/landing-Page/pull/1": "Hero section update",
+    "https://github.com/VCET-Hacks/landing-Page/pull/2": "Added project logo",
+    "https://github.com/janhvi178/Evaluation-Error-/pull/1": "Initial project setup",
+    "https://github.com/DHEERAJHARODE/Hacktoberfest2025-Open-source-/pull/2627": "Binary Search Tree in C++",
+    "https://github.com/shivaniverma2002/agent-builder/pull/1": "Codebase updates",
+    "https://github.com/hiteshchoudhary/open-source-contribution/pull/321": "Stack implementation in C++",
+    "https://github.com/hiteshchoudhary/open-source-contribution/pull/323": "Problem solution in C++"
+  }
+}

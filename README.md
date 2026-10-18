@@ -40,15 +40,18 @@ const harsh = {
   </a>
 </p>
 
+<!-- OSS-PRS:START -->
 | 📦 Project | 🛠️ Contribution | 📌 Status |
 |-----------|-----------------|-----------|
-| [neetcode-gh/leetcode](https://github.com/neetcode-gh/leetcode) | [C++ solution for 1463. Cherry Pickup II](https://github.com/neetcode-gh/leetcode/pull/3299) | ![PR](https://img.shields.io/github/pulls/detail/state/neetcode-gh/leetcode/3299?style=flat-square) |
-| [VCET-Hacks/landing-Page](https://github.com/VCET-Hacks/landing-Page) | [Hero section update](https://github.com/VCET-Hacks/landing-Page/pull/1) | ![PR](https://img.shields.io/github/pulls/detail/state/VCET-Hacks/landing-Page/1?style=flat-square) |
-| [VCET-Hacks/landing-Page](https://github.com/VCET-Hacks/landing-Page) | [Added project logo](https://github.com/VCET-Hacks/landing-Page/pull/2) | ![PR](https://img.shields.io/github/pulls/detail/state/VCET-Hacks/landing-Page/2?style=flat-square) |
-| [janhvi178/Evaluation-Error-](https://github.com/janhvi178/Evaluation-Error-) | [Initial project setup](https://github.com/janhvi178/Evaluation-Error-/pull/1) | ![PR](https://img.shields.io/github/pulls/detail/state/janhvi178/Evaluation-Error-/1?style=flat-square) |
-| [DHEERAJHARODE/Hacktoberfest2025](https://github.com/DHEERAJHARODE/Hacktoberfest2025-Open-source-) | [Binary Search Tree in C++](https://github.com/DHEERAJHARODE/Hacktoberfest2025-Open-source-/pull/2627) | ![PR](https://img.shields.io/github/pulls/detail/state/DHEERAJHARODE/Hacktoberfest2025-Open-source-/2627?style=flat-square) |
-| [shivaniverma2002/agent-builder](https://github.com/shivaniverma2002/agent-builder) | [Codebase updates](https://github.com/shivaniverma2002/agent-builder/pull/1) | ![PR](https://img.shields.io/github/pulls/detail/state/shivaniverma2002/agent-builder/1?style=flat-square) |
-| [hiteshchoudhary/open-source-contribution](https://github.com/hiteshchoudhary/open-source-contribution) | [Stack implementation in C++](https://github.com/hiteshchoudhary/open-source-contribution/pull/321) | ![PR](https://img.shields.io/github/pulls/detail/state/hiteshchoudhary/open-source-contribution/321?style=flat-square) |
+| [neetcode-gh/leetcode](https://github.com/neetcode-gh/leetcode) | [C++ solution for 1463. Cherry Pickup II](https://github.com/neetcode-gh/leetcode/pull/3299) | ![merged](https://img.shields.io/badge/merged-8957e5?style=flat-square&logo=git-merge&logoColor=white) |
+| [VCET-Hacks/landing-Page](https://github.com/VCET-Hacks/landing-Page) | [Hero section update](https://github.com/VCET-Hacks/landing-Page/pull/1) | ![merged](https://img.shields.io/badge/merged-8957e5?style=flat-square&logo=git-merge&logoColor=white) |
+| [VCET-Hacks/landing-Page](https://github.com/VCET-Hacks/landing-Page) | [Added project logo](https://github.com/VCET-Hacks/landing-Page/pull/2) | ![merged](https://img.shields.io/badge/merged-8957e5?style=flat-square&logo=git-merge&logoColor=white) |
+| [janhvi178/Evaluation-Error-](https://github.com/janhvi178/Evaluation-Error-) | [Initial project setup](https://github.com/janhvi178/Evaluation-Error-/pull/1) | ![merged](https://img.shields.io/badge/merged-8957e5?style=flat-square&logo=git-merge&logoColor=white) |
+| [shivaniverma2002/agent-builder](https://github.com/shivaniverma2002/agent-builder) | [Codebase updates](https://github.com/shivaniverma2002/agent-builder/pull/1) | ![open](https://img.shields.io/badge/open-2ea44f?style=flat-square&logo=git-pull-request&logoColor=white) |
+| [DHEERAJHARODE/Hacktoberfest2025-Open-source-](https://github.com/DHEERAJHARODE/Hacktoberfest2025-Open-source-) | [Binary Search Tree in C++](https://github.com/DHEERAJHARODE/Hacktoberfest2025-Open-source-/pull/2627) | ![open](https://img.shields.io/badge/open-2ea44f?style=flat-square&logo=git-pull-request&logoColor=white) |
+| [hiteshchoudhary/open-source-contribution](https://github.com/hiteshchoudhary/open-source-contribution) | [Problem solution in C++](https://github.com/hiteshchoudhary/open-source-contribution/pull/323) | ![open](https://img.shields.io/badge/open-2ea44f?style=flat-square&logo=git-pull-request&logoColor=white) |
+| [hiteshchoudhary/open-source-contribution](https://github.com/hiteshchoudhary/open-source-contribution) | [Stack implementation in C++](https://github.com/hiteshchoudhary/open-source-contribution/pull/321) | ![open](https://img.shields.io/badge/open-2ea44f?style=flat-square&logo=git-pull-request&logoColor=white) |
+<!-- OSS-PRS:END -->
 
 <p align="center">
   <img src="https://img.shields.io/badge/Hacktoberfest-2025-FF8AE2?style=for-the-badge&logo=hacktoberfest&logoColor=white" alt="Hacktoberfest 2025" />
@@ -60,92 +63,20 @@ const harsh = {
 
 <sub>All public, all open to issues and PRs. Pick one and jump in! 🤝</sub>
 
-<table>
-  <tr>
-    <td width="50%">
-      <h3 align="center">Padho AI</h3>
-      <p align="center">
-        <a href="https://github.com/harshuCodes-git/Padho-AI" target="_blank">
-          <img src="https://github-readme-stats.vercel.app/api/pin/?username=harshuCodes-git&repo=Padho-AI&theme=tokyonight" alt="Padho AI" />
-        </a>
-      </p>
-      <p align="center">
-        <b>GenAI Learning Platform</b><br>
-        Next.js • NeonDB • Firebase • Deepgram • Vapi AI • Gemini<br>
-        Voice-based agentic conversations with custom LLM
-      </p>
-    </td>
-    <td width="50%">
-      <h3 align="center">Webify AI</h3>
-      <p align="center">
-        <a href="https://github.com/harshuCodes-git/Webify-AI" target="_blank">
-          <img src="https://github-readme-stats.vercel.app/api/pin/?username=harshuCodes-git&repo=Webify-AI&theme=tokyonight" alt="Webify AI" />
-        </a>
-      </p>
-      <p align="center">
-        <b>Prompt-to-Code App</b><br>
-        Next.js • AWS • Sandpack<br>
-        Real-time code generation with live preview
-      </p>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%">
-      <h3 align="center">PixelFit</h3>
-      <p align="center">
-        <a href="https://github.com/harshuCodes-git/PixelFit" target="_blank">
-          <img src="https://github-readme-stats.vercel.app/api/pin/?username=harshuCodes-git&repo=PixelFit&theme=tokyonight" alt="PixelFit" />
-        </a>
-      </p>
-      <p align="center">
-        <b>3D AR Virtual Try-On</b><br>
-        React • Node.js • Three.js • Blender<br>
-        AI-powered fashion recommendations
-      </p>
-    </td>
-    <td width="50%">
-      <h3 align="center">FitGenie</h3>
-      <p align="center">
-        <a href="https://github.com/harshuCodes-git/FitGen-Part-2" target="_blank">
-          <img src="https://github-readme-stats.vercel.app/api/pin/?username=harshuCodes-git&repo=FitGen-Part-2&theme=tokyonight" alt="FitGenie" />
-        </a>
-      </p>
-      <p align="center">
-        <b>Fitness Platform</b><br>
-        Full-Stack Application (In Development)<br>
-        Looking for contributors! 🤝
-      </p>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%">
-      <h3 align="center">MindCureAI</h3>
-      <p align="center">
-        <a href="https://github.com/harshuCodes-git/MindCureAI" target="_blank">
-          <img src="https://github-readme-stats.vercel.app/api/pin/?username=harshuCodes-git&repo=MindCureAI&theme=tokyonight" alt="MindCureAI" />
-        </a>
-      </p>
-      <p align="center">
-        <b>Mental Health Platform</b><br>
-        Connecting students, parents, and doctors<br>
-        AI assessments & expert consultations
-      </p>
-    </td>
-    <td width="50%">
-      <h3 align="center">IntelliTrip</h3>
-      <p align="center">
-        <a href="https://github.com/harshuCodes-git/IntelliTrip" target="_blank">
-          <img src="https://github-readme-stats.vercel.app/api/pin/?username=harshuCodes-git&repo=IntelliTrip&theme=tokyonight" alt="IntelliTrip" />
-        </a>
-      </p>
-      <p align="center">
-        <b>AI Travel Planner</b><br>
-        React • GenAI<br>
-        Personalized trip itineraries
-      </p>
-    </td>
-  </tr>
-</table>
+<!-- OSS-REPOS:START -->
+| 📁 Repository | 📝 Description | 💻 Language | ⭐ Stars |
+|--------------|----------------|-------------|---------|
+| [padho-ai](https://github.com/harshuCodes-git/padho-ai) | — | JavaScript | 0 |
+| [Webify-AI](https://github.com/harshuCodes-git/Webify-AI) | — | JavaScript | 0 |
+| [IntelliTrip](https://github.com/harshuCodes-git/IntelliTrip) | — | JavaScript | 0 |
+| [MindCureAI](https://github.com/harshuCodes-git/MindCureAI) | YouthCare is a mental health platform connecting students, parents, and doctors to promote well-b... | JavaScript | 0 |
+| [Purple-Box-CRM](https://github.com/harshuCodes-git/Purple-Box-CRM) | 🟪 Purple Box is an AI-powered CRM designed to centralize and streamline e-commerce operations. Ou... | TypeScript | 0 |
+| [litwits](https://github.com/harshuCodes-git/litwits) | — | JavaScript | 0 |
+| [health-project](https://github.com/harshuCodes-git/health-project) | — | Go | 0 |
+| [golang-web-scraper](https://github.com/harshuCodes-git/golang-web-scraper) | — | Go | 0 |
+| [learning_go](https://github.com/harshuCodes-git/learning_go) | Learning go | Go | 0 |
+| [ace-crawler](https://github.com/harshuCodes-git/ace-crawler) | — | — | 0 |
+<!-- OSS-REPOS:END -->
 
 <div align="center">
   <a href="https://github.com/harshuCodes-git?tab=repositories">
