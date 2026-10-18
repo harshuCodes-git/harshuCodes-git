@@ -291,7 +291,7 @@ def main():
     repos = fetch_repos(config)
     # Counts only: the Actions log is public for a public repo.
     private_count = sum(r["private"] for r in repos)
-    print(f"PROFILE_TOKEN set: {bool(PROFILE_TOKEN)} | repos: {len(repos)} | private: {private_count}")
+    print(f"::notice::PROFILE_TOKEN set: {bool(PROFILE_TOKEN)} | repos: {len(repos)} | private: {private_count}")
     data = {
         "user": USER,
         "contributions": fetch_contributions(config),
