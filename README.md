@@ -64,18 +64,18 @@ const harsh = {
 <sub>All public, all open to issues and PRs. Pick one and jump in! 🤝</sub>
 
 <!-- OSS-REPOS:START -->
-| 📁 Repository | 📝 Description | 💻 Language | ⭐ Stars |
-|--------------|----------------|-------------|---------|
-| [padho-ai](https://github.com/harshuCodes-git/padho-ai) | — | JavaScript | 0 |
-| [Webify-AI](https://github.com/harshuCodes-git/Webify-AI) | — | JavaScript | 0 |
-| [IntelliTrip](https://github.com/harshuCodes-git/IntelliTrip) | — | JavaScript | 0 |
-| [MindCureAI](https://github.com/harshuCodes-git/MindCureAI) | YouthCare is a mental health platform connecting students, parents, and doctors to promote well-b... | JavaScript | 0 |
-| [Purple-Box-CRM](https://github.com/harshuCodes-git/Purple-Box-CRM) | 🟪 Purple Box is an AI-powered CRM designed to centralize and streamline e-commerce operations. Ou... | TypeScript | 0 |
-| [litwits](https://github.com/harshuCodes-git/litwits) | — | JavaScript | 0 |
-| [health-project](https://github.com/harshuCodes-git/health-project) | — | Go | 0 |
-| [golang-web-scraper](https://github.com/harshuCodes-git/golang-web-scraper) | — | Go | 0 |
-| [learning_go](https://github.com/harshuCodes-git/learning_go) | Learning go | Go | 0 |
-| [ace-crawler](https://github.com/harshuCodes-git/ace-crawler) | — | — | 0 |
+| 📁 Repository | 📝 Description | 💻 Language | 🔗 Links | ⭐ Stars |
+|--------------|----------------|-------------|----------|---------|
+| [job_mail_automation](https://github.com/harshuCodes-git/job_mail_automation) | Automate cold-email job outreach from your own Gmail — tracks bounces, runs free on Render. Open... | JavaScript | — | 3 |
+| [padho-ai](https://github.com/harshuCodes-git/padho-ai) | — | JavaScript | [🌐 Live](https://padho-ai.vercel.app) | 0 |
+| [Webify-AI](https://github.com/harshuCodes-git/Webify-AI) | — | JavaScript | [🌐 Live](https://text-to-code-ten.vercel.app) | 0 |
+| [IntelliTrip](https://github.com/harshuCodes-git/IntelliTrip) | — | JavaScript | [🌐 Live](https://ai-travel-app-eta.vercel.app) | 0 |
+| [MindCureAI](https://github.com/harshuCodes-git/MindCureAI) | YouthCare is a mental health platform connecting students, parents, and doctors to promote well-b... | JavaScript | — | 0 |
+| [Purple-Box-CRM](https://github.com/harshuCodes-git/Purple-Box-CRM) | 🟪 Purple Box is an AI-powered CRM designed to centralize and streamline e-commerce operations. Ou... | TypeScript | [🌐 Live](https://purple-box-crm-xi.vercel.app/) | 0 |
+| [litwits](https://github.com/harshuCodes-git/litwits) | — | JavaScript | — | 0 |
+| [health-project](https://github.com/harshuCodes-git/health-project) | — | Go | — | 0 |
+| [golang-web-scraper](https://github.com/harshuCodes-git/golang-web-scraper) | — | Go | — | 0 |
+| [learning_go](https://github.com/harshuCodes-git/learning_go) | Learning go | Go | — | 0 |
 <!-- OSS-REPOS:END -->
 
 <div align="center">
@@ -83,6 +83,14 @@ const harsh = {
     <img src="https://img.shields.io/badge/View%20All%20Repositories-100000?style=for-the-badge&logo=github&logoColor=white" alt="View All Repositories" />
   </a>
 </div>
+
+---
+
+## 📦 npm Packages
+
+<!-- OSS-NPM:START -->
+<p align="center"><i>🚧 Packages coming soon...</i></p>
+<!-- OSS-NPM:END -->
 
 ---
 

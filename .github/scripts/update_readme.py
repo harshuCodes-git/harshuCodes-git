@@ -9,6 +9,7 @@ import json
 import os
 import re
 import sys
+import urllib.error
 import urllib.parse
 import urllib.request
 
@@ -113,18 +114,76 @@ def fetch_repos(config):
     return repos[: config.get("max_repos", 10)]
 
 
-def render_repos(repos):
+def render_repos(repos, config):
+    live_links = {k.lower(): v for k, v in config.get("live_links", {}).items()}
+    npm_by_repo = {
+        p["repo"].lower(): p["name"] for p in config.get("npm_packages", []) if p.get("repo")
+    }
     lines = [
-        "| 📁 Repository | 📝 Description | 💻 Language | ⭐ Stars |",
-        "|--------------|----------------|-------------|---------|",
+        "| 📁 Repository | 📝 Description | 💻 Language | 🔗 Links | ⭐ Stars |",
+        "|--------------|----------------|-------------|----------|---------|",
     ]
     for r in repos:
         desc = r["description"] or ""
         if len(desc) > 100:
             desc = desc[:97].rstrip() + "..."
+        # The repo's "Website" field on GitHub wins; config fills in the rest.
+        live = r.get("homepage") or live_links.get(r["name"].lower())
+        links = []
+        if live:
+            links.append(f"[🌐 Live]({live})")
+        if r["name"].lower() in npm_by_repo:
+            pkg = npm_by_repo[r["name"].lower()]
+            links.append(f"[📦 npm](https://www.npmjs.com/package/{pkg})")
         lines.append(
             f"| [{cell(r['name'])}]({r['html_url']}) | {cell(desc) or '—'} "
-            f"| {cell(r['language']) or '—'} | {r['stargazers_count']} |"
+            f"| {cell(r['language']) or '—'} | {' · '.join(links) or '—'} "
+            f"| {r['stargazers_count']} |"
+        )
+    return "\n".join(lines)
+
+
+def npm_published(name):
+    try:
+        api(f"https://registry.npmjs.org/{urllib.parse.quote(name, safe='@')}/latest")
+        return True
+    except urllib.error.HTTPError:
+        return False
+
+
+def render_npm(config):
+    packages = list(config.get("npm_packages", []))
+    # Anything published under the npm account is picked up automatically.
+    npm_user = config.get("npm_user")
+    if npm_user:
+        known = {p["name"] for p in packages}
+        data = api(f"https://registry.npmjs.org/-/v1/search?text=maintainer:{npm_user}&size=50")
+        for obj in data["objects"]:
+            pkg = obj["package"]
+            if pkg["name"] not in known:
+                packages.append({"name": pkg["name"], "description": pkg.get("description", "")})
+
+    if not packages:
+        return "<p align=\"center\"><i>🚧 Packages coming soon...</i></p>"
+
+    lines = [
+        "| 📦 Package | 📝 Description | 🏷️ Version | 📥 Downloads |",
+        "|-----------|----------------|------------|--------------|",
+    ]
+    for p in packages:
+        name = p["name"]
+        if npm_published(name):
+            version = f"![version](https://img.shields.io/npm/v/{name}?style=flat-square&color=cb3837)"
+            downloads = f"![downloads](https://img.shields.io/npm/dm/{name}?style=flat-square)"
+        else:
+            version = "![status](https://img.shields.io/badge/status-in%20development-orange?style=flat-square)"
+            downloads = "—"
+        link = f"https://www.npmjs.com/package/{name}"
+        if p.get("repo"):
+            link = f"https://github.com/{USER}/{p['repo']}"
+        lines.append(
+            f"| [{cell(name)}]({link}) | {cell(p.get('description')) or '—'} "
+            f"| {version} | {downloads} |"
         )
     return "\n".join(lines)
 
@@ -143,7 +202,8 @@ def main():
         text = f.read()
 
     text = replace_section(text, "OSS-PRS", render_prs(fetch_prs(config)))
-    text = replace_section(text, "OSS-REPOS", render_repos(fetch_repos(config)))
+    text = replace_section(text, "OSS-REPOS", render_repos(fetch_repos(config), config))
+    text = replace_section(text, "OSS-NPM", render_npm(config))
 
     with open(README, "w", encoding="utf-8", newline="\n") as f:
         f.write(text)

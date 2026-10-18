@@ -11,6 +11,7 @@
   ],
   "exclude_contribution_repos": [],
   "featured_repos": [
+    "job_mail_automation",
     "padho-ai",
     "Webify-AI",
     "IntelliTrip",
@@ -18,7 +19,6 @@
     "Purple-Box-CRM"
   ],
   "exclude_repos": [
-    "job_mail_automation",
     "github-contribution-commit",
     "Vaishnavi-Mudaliar-portfolio",
     "harshuCodes-git.github.io"
@@ -26,6 +26,9 @@
   "exclude_repo_patterns": [
     "task"
   ],
+  "live_links": {},
+  "npm_user": "",
+  "npm_packages": [],
   "pr_titles": {
     "https://github.com/neetcode-gh/leetcode/pull/3299": "C++ solution for 1463. Cherry Pickup II",
     "https://github.com/VCET-Hacks/landing-Page/pull/1": "Hero section update",
