@@ -151,10 +151,6 @@ const harsh = {
   <img width="49%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=harshucodes-git&layout=compact&theme=tokyonight&hide_border=true&langs_count=10" alt="Top Languages" />
 </p>
 
-<p align="center">
-  <img src="https://ghchart.rshah.org/40c463/harshuCodes-git" alt="Contribution Graph" />
-</p>
-
 ---
 
 ## 🐍 Contribution Snake
