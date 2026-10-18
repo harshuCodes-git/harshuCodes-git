@@ -91,7 +91,11 @@ const harsh = {
 <sub>Private work in progress. Updated automatically.</sub>
 
 <!-- OSS-PRIVATE:START -->
-<p align="center"><i>Nothing private in progress right now.</i></p>
+| 🔒 Project | 💻 Language | 🕒 Last Update |
+|-----------|-------------|----------------|
+| Private project | TypeScript | Oct 18, 2026 |
+| Private project | JavaScript | Oct 04, 2026 |
+| Private project | JavaScript | Sep 03, 2026 |
 <!-- OSS-PRIVATE:END -->
 
 ---
