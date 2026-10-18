@@ -199,7 +199,7 @@ const harsh = {
 </p>
 
 <p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=harshuCodes-git&theme=tokyo-night&hide_border=true&area=true&custom_title=Contribution%20Graph" alt="Contribution Graph" />
+  <img src="https://ghchart.rshah.org/40c463/harshuCodes-git" alt="Contribution Graph" />
 </p>
 
 ---
@@ -207,7 +207,10 @@ const harsh = {
 ## 🐍 Contribution Snake
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/harshuCodes-git/harshuCodes-git/output/github-contribution-grid-snake-dark.svg" alt="Snake animation" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/harshuCodes-git/harshuCodes-git/output/github-contribution-grid-snake-dark.svg" />
+    <img src="https://raw.githubusercontent.com/harshuCodes-git/harshuCodes-git/output/github-contribution-grid-snake.svg" alt="Snake animation" />
+  </picture>
 </p>
 
 ---
