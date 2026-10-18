@@ -33,6 +33,9 @@
   "private_activity_days": 60,
   "max_private": 5,
   "live_links": {},
+  "descriptions": {
+    "padho-ai": "GenAI adaptive learning platform with voice-based AI tutoring, powered by Deepgram, Vapi AI and Gemini."
+  },
   "npm_user": "",
   "npm_packages": [],
   "pr_titles": {

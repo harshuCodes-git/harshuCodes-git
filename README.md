@@ -29,6 +29,43 @@ const harsh = {
 
 ---
 
+## 🎯 My Open Source Projects
+
+<sub>All public, all open to issues and PRs. Pick one and jump in! 🤝</sub>
+
+<!-- OSS-REPOS:START -->
+| 📁 Repository | 📝 Description | 💻 Language | 🔗 Links | ⭐ Stars |
+|--------------|----------------|-------------|----------|---------|
+| [job_mail_automation](https://github.com/harshuCodes-git/job_mail_automation) | Automate cold-email job outreach from your own Gmail — tracks bounces, runs free on Render. Open... | JavaScript | — | 3 |
+| [padho-ai](https://github.com/harshuCodes-git/padho-ai) | GenAI adaptive learning platform with voice-based AI tutoring, powered by Deepgram, Vapi AI and... | JavaScript | [🌐&nbsp;Live](https://padho-ai.vercel.app) | 0 |
+| [Webify-AI](https://github.com/harshuCodes-git/Webify-AI) | Webify AI is a Next.js-powered AI-driven web development platform inspired by Bolt.new. Unlike... | JavaScript | [🌐&nbsp;Live](https://text-to-code-ten.vercel.app) | 0 |
+| [IntelliTrip](https://github.com/harshuCodes-git/IntelliTrip) | This project enables users to create tailored travel plans with high accuracy by inputting their... | JavaScript | [🌐&nbsp;Live](https://ai-travel-app-eta.vercel.app) | 0 |
+| [MindCureAI](https://github.com/harshuCodes-git/MindCureAI) | YouthCare is a mental health platform connecting students, parents, and doctors to promote... | JavaScript | — | 0 |
+| [Purple-Box-CRM](https://github.com/harshuCodes-git/Purple-Box-CRM) | 🟪 Purple Box is an AI-powered CRM designed to centralize and streamline e-commerce operations.... | TypeScript | [🌐&nbsp;Live](https://purple-box-crm-xi.vercel.app/) | 0 |
+| [litwits](https://github.com/harshuCodes-git/litwits) | Production-ready full-stack user management app (React + Node/Express + MongoDB) with... | JavaScript | — | 0 |
+| [health-project](https://github.com/harshuCodes-git/health-project) | Full-stack AI-powered healthcare web platform. | Go | — | 0 |
+| [golang-web-scraper](https://github.com/harshuCodes-git/golang-web-scraper) | A multi-platform web scraper built in Go. Supports scraping Instagram, GitHub, LinkedIn, and... | Go | — | 0 |
+| [learning_go](https://github.com/harshuCodes-git/learning_go) | Learning go | Go | — | 0 |
+<!-- OSS-REPOS:END -->
+
+<div align="center">
+  <a href="https://github.com/harshuCodes-git?tab=repositories">
+    <img src="https://img.shields.io/badge/View%20All%20Repositories-100000?style=for-the-badge&logo=github&logoColor=white" alt="View All Repositories" />
+  </a>
+</div>
+
+---
+
+## 🚧 Currently Building
+
+<sub>Private work in progress. Updated automatically.</sub>
+
+<!-- OSS-PRIVATE:START -->
+<p align="center"><i>Nothing private in progress right now.</i></p>
+<!-- OSS-PRIVATE:END -->
+
+---
+
 ## 🔀 Open Source Contributions
 
 <p align="center">
@@ -56,47 +93,6 @@ const harsh = {
 <p align="center">
   <img src="https://img.shields.io/badge/Hacktoberfest-2025-FF8AE2?style=for-the-badge&logo=hacktoberfest&logoColor=white" alt="Hacktoberfest 2025" />
 </p>
-
----
-
-## 🎯 My Open Source Projects
-
-<sub>All public, all open to issues and PRs. Pick one and jump in! 🤝</sub>
-
-<!-- OSS-REPOS:START -->
-| 📁 Repository | 📝 Description | 💻 Language | 🔗 Links | ⭐ Stars |
-|--------------|----------------|-------------|----------|---------|
-| [job_mail_automation](https://github.com/harshuCodes-git/job_mail_automation) | Automate cold-email job outreach from your own Gmail — tracks bounces, runs free on Render. Open... | JavaScript | — | 3 |
-| [padho-ai](https://github.com/harshuCodes-git/padho-ai) | — | JavaScript | [🌐 Live](https://padho-ai.vercel.app) | 0 |
-| [Webify-AI](https://github.com/harshuCodes-git/Webify-AI) | — | JavaScript | [🌐 Live](https://text-to-code-ten.vercel.app) | 0 |
-| [IntelliTrip](https://github.com/harshuCodes-git/IntelliTrip) | — | JavaScript | [🌐 Live](https://ai-travel-app-eta.vercel.app) | 0 |
-| [MindCureAI](https://github.com/harshuCodes-git/MindCureAI) | YouthCare is a mental health platform connecting students, parents, and doctors to promote well-b... | JavaScript | — | 0 |
-| [Purple-Box-CRM](https://github.com/harshuCodes-git/Purple-Box-CRM) | 🟪 Purple Box is an AI-powered CRM designed to centralize and streamline e-commerce operations. Ou... | TypeScript | [🌐 Live](https://purple-box-crm-xi.vercel.app/) | 0 |
-| [litwits](https://github.com/harshuCodes-git/litwits) | — | JavaScript | — | 0 |
-| [health-project](https://github.com/harshuCodes-git/health-project) | — | Go | — | 0 |
-| [golang-web-scraper](https://github.com/harshuCodes-git/golang-web-scraper) | — | Go | — | 0 |
-| [learning_go](https://github.com/harshuCodes-git/learning_go) | Learning go | Go | — | 0 |
-<!-- OSS-REPOS:END -->
-
-<div align="center">
-  <a href="https://github.com/harshuCodes-git?tab=repositories">
-    <img src="https://img.shields.io/badge/View%20All%20Repositories-100000?style=for-the-badge&logo=github&logoColor=white" alt="View All Repositories" />
-  </a>
-</div>
-
----
-
-## 🚧 Currently Building
-
-<sub>Private work in progress. Updated automatically.</sub>
-
-<!-- OSS-PRIVATE:START -->
-| 🔒 Project | 💻 Language | 🕒 Last Update |
-|-----------|-------------|----------------|
-| Private project | TypeScript | Oct 18, 2026 |
-| Private project | JavaScript | Oct 04, 2026 |
-| Private project | JavaScript | Sep 03, 2026 |
-<!-- OSS-PRIVATE:END -->
 
 ---
 

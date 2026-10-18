@@ -57,7 +57,9 @@ def cell(text):
 
 def short(text, limit=100):
     text = text or ""
-    return text[: limit - 3].rstrip() + "..." if len(text) > limit else text
+    if len(text) <= limit:
+        return text
+    return text[: limit - 3].rsplit(" ", 1)[0].rstrip(" ,;:—-") + "..."
 
 
 def fetch_contributions(config):
@@ -112,6 +114,48 @@ def fetch_repos(config):
     ]
 
 
+def raw_file(repo, path):
+    try:
+        req = urllib.request.Request(
+            f"https://raw.githubusercontent.com/{repo}/HEAD/{path}",
+            headers={"User-Agent": f"{USER}-readme-updater"},
+        )
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            return resp.read().decode("utf-8", errors="replace")
+    except urllib.error.HTTPError:
+        return None
+
+
+def readme_summary(text):
+    """First prose sentence of a README, skipping headings, badges, HTML, lists and code."""
+    text = re.sub(r"```.*?```", "", text, flags=re.S)
+    for line in text.splitlines():
+        if not line.strip() or line[0].isspace() or line.lstrip()[0] in "#<![|>-*+=`0123456789":
+            continue
+        line = re.sub(r"\[([^\]]*)\]\([^)]*\)", r"\1", line)  # [text](url) -> text
+        line = re.sub(r"[*_`]", "", line).strip()
+        if len(line.split()) >= 5:
+            return line
+    return ""
+
+
+def describe(repo, config):
+    """Config override, then GitHub description, then package.json, then README."""
+    override = {k.lower(): v for k, v in config.get("descriptions", {}).items()}.get(repo["name"].lower())
+    if override or repo["description"]:
+        return override or repo["description"]
+    pkg = raw_file(repo["full_name"], "package.json")
+    if pkg:
+        try:
+            desc = json.loads(pkg).get("description")
+            if desc:
+                return desc
+        except ValueError:
+            pass
+    readme = raw_file(repo["full_name"], "README.md")
+    return readme_summary(readme) if readme else ""
+
+
 def build_projects(repos, config):
     live_links = {k.lower(): v for k, v in config.get("live_links", {}).items()}
     npm_by_repo = {
@@ -130,7 +174,7 @@ def build_projects(repos, config):
         projects.append({
             "name": r["name"],
             "url": r["html_url"],
-            "description": r["description"] or "",
+            "description": describe(r, config),
             "language": r["language"],
             "topics": r.get("topics", []),
             "stars": r["stargazers_count"],
@@ -229,9 +273,9 @@ def render_projects(projects):
     for p in projects:
         links = []
         if p["live"]:
-            links.append(f"[🌐 Live]({p['live']})")
+            links.append(f"[🌐&nbsp;Live]({p['live']})")
         if p["npm"]:
-            links.append(f"[📦 npm]({p['npm']})")
+            links.append(f"[📦&nbsp;npm]({p['npm']})")
         lines.append(
             f"| [{cell(p['name'])}]({p['url']}) | {cell(short(p['description'])) or '—'} "
             f"| {cell(p['language']) or '—'} | {' · '.join(links) or '—'} | {p['stars']} |"

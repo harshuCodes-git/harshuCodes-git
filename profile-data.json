@@ -82,7 +82,7 @@
     {
       "name": "padho-ai",
       "url": "https://github.com/harshuCodes-git/padho-ai",
-      "description": "",
+      "description": "GenAI adaptive learning platform with voice-based AI tutoring, powered by Deepgram, Vapi AI and Gemini.",
       "language": "JavaScript",
       "topics": [],
       "stars": 0,
@@ -94,7 +94,7 @@
     {
       "name": "Webify-AI",
       "url": "https://github.com/harshuCodes-git/Webify-AI",
-      "description": "",
+      "description": "Webify AI is a Next.js-powered AI-driven web development platform inspired by Bolt.new. Unlike traditional tools, it features a custom-built Large Language Model (LLM) module, enhancing the development process with AI-assisted suggestions, auto-generated code, and seamless deployment.",
       "language": "JavaScript",
       "topics": [],
       "stars": 0,
@@ -106,7 +106,7 @@
     {
       "name": "IntelliTrip",
       "url": "https://github.com/harshuCodes-git/IntelliTrip",
-      "description": "",
+      "description": "This project enables users to create tailored travel plans with high accuracy by inputting their location, number of travelers, budget, and companions. Using AI-powered optimization, the system recommends accommodations, activities, and transportation, achieving an 85% user satisfaction rate.",
       "language": "JavaScript",
       "topics": [],
       "stars": 0,
@@ -142,7 +142,7 @@
     {
       "name": "litwits",
       "url": "https://github.com/harshuCodes-git/litwits",
-      "description": "",
+      "description": "Production-ready full-stack user management app (React + Node/Express + MongoDB) with authentication and role-based access control.",
       "language": "JavaScript",
       "topics": [],
       "stars": 0,
@@ -154,7 +154,7 @@
     {
       "name": "health-project",
       "url": "https://github.com/harshuCodes-git/health-project",
-      "description": "",
+      "description": "Full-stack AI-powered healthcare web platform.",
       "language": "Go",
       "topics": [],
       "stars": 0,
@@ -166,7 +166,7 @@
     {
       "name": "golang-web-scraper",
       "url": "https://github.com/harshuCodes-git/golang-web-scraper",
-      "description": "",
+      "description": "A multi-platform web scraper built in Go. Supports scraping Instagram, GitHub, LinkedIn, and general websites with CSV export.",
       "language": "Go",
       "topics": [],
       "stars": 0,
@@ -188,25 +188,6 @@
       "pushed_at": "2026-04-24T11:05:45Z"
     }
   ],
-  "private_activity": [
-    {
-      "name": null,
-      "description": null,
-      "language": "TypeScript",
-      "pushed_at": "2026-10-18T14:38:22Z"
-    },
-    {
-      "name": null,
-      "description": null,
-      "language": "JavaScript",
-      "pushed_at": "2026-10-04T06:54:45Z"
-    },
-    {
-      "name": null,
-      "description": null,
-      "language": "JavaScript",
-      "pushed_at": "2026-09-03T03:01:53Z"
-    }
-  ],
+  "private_activity": [],
   "npm_packages": []
 }
