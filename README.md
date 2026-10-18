@@ -86,6 +86,16 @@ const harsh = {
 
 ---
 
+## 🚧 Currently Building
+
+<sub>Private work in progress. Updated automatically.</sub>
+
+<!-- OSS-PRIVATE:START -->
+<p align="center"><i>Nothing private in progress right now.</i></p>
+<!-- OSS-PRIVATE:END -->
+
+---
+
 ## 📦 npm Packages
 
 <!-- OSS-NPM:START -->
@@ -163,7 +173,7 @@ const harsh = {
   <a href="https://twitter.com/Harshu_021">
     <img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" alt="Twitter"/>
   </a>
-  <a href="https://v0-harsh-dubeyportfolio.vercel.app/">
+  <a href="https://v0-harsh-dubey-portfolio.vercel.app/">
     <img src="https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio"/>
   </a>
 </p>

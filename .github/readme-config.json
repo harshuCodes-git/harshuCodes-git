@@ -26,6 +26,12 @@
   "exclude_repo_patterns": [
     "task"
   ],
+  "private_repos": {
+    "default": "anonymous",
+    "overrides": {}
+  },
+  "private_activity_days": 60,
+  "max_private": 5,
   "live_links": {},
   "npm_user": "",
   "npm_packages": [],

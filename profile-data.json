@@ -1,0 +1,193 @@
+{
+  "user": "harshuCodes-git",
+  "contributions": [
+    {
+      "repo": "neetcode-gh/leetcode",
+      "repo_url": "https://github.com/neetcode-gh/leetcode",
+      "title": "C++ solution for 1463. Cherry Pickup II",
+      "url": "https://github.com/neetcode-gh/leetcode/pull/3299",
+      "status": "merged",
+      "date": "2024-11-07T04:18:33Z"
+    },
+    {
+      "repo": "VCET-Hacks/landing-Page",
+      "repo_url": "https://github.com/VCET-Hacks/landing-Page",
+      "title": "Hero section update",
+      "url": "https://github.com/VCET-Hacks/landing-Page/pull/1",
+      "status": "merged",
+      "date": "2024-10-02T06:13:07Z"
+    },
+    {
+      "repo": "VCET-Hacks/landing-Page",
+      "repo_url": "https://github.com/VCET-Hacks/landing-Page",
+      "title": "Added project logo",
+      "url": "https://github.com/VCET-Hacks/landing-Page/pull/2",
+      "status": "merged",
+      "date": "2024-10-02T06:12:44Z"
+    },
+    {
+      "repo": "janhvi178/Evaluation-Error-",
+      "repo_url": "https://github.com/janhvi178/Evaluation-Error-",
+      "title": "Initial project setup",
+      "url": "https://github.com/janhvi178/Evaluation-Error-/pull/1",
+      "status": "merged",
+      "date": "2024-06-30T12:54:51Z"
+    },
+    {
+      "repo": "shivaniverma2002/agent-builder",
+      "repo_url": "https://github.com/shivaniverma2002/agent-builder",
+      "title": "Codebase updates",
+      "url": "https://github.com/shivaniverma2002/agent-builder/pull/1",
+      "status": "open",
+      "date": "2026-03-13T12:19:05Z"
+    },
+    {
+      "repo": "DHEERAJHARODE/Hacktoberfest2025-Open-source-",
+      "repo_url": "https://github.com/DHEERAJHARODE/Hacktoberfest2025-Open-source-",
+      "title": "Binary Search Tree in C++",
+      "url": "https://github.com/DHEERAJHARODE/Hacktoberfest2025-Open-source-/pull/2627",
+      "status": "open",
+      "date": "2024-10-07T03:38:12Z"
+    },
+    {
+      "repo": "hiteshchoudhary/open-source-contribution",
+      "repo_url": "https://github.com/hiteshchoudhary/open-source-contribution",
+      "title": "Problem solution in C++",
+      "url": "https://github.com/hiteshchoudhary/open-source-contribution/pull/323",
+      "status": "open",
+      "date": "2024-05-03T03:25:00Z"
+    },
+    {
+      "repo": "hiteshchoudhary/open-source-contribution",
+      "repo_url": "https://github.com/hiteshchoudhary/open-source-contribution",
+      "title": "Stack implementation in C++",
+      "url": "https://github.com/hiteshchoudhary/open-source-contribution/pull/321",
+      "status": "open",
+      "date": "2024-04-29T16:09:18Z"
+    }
+  ],
+  "projects": [
+    {
+      "name": "job_mail_automation",
+      "url": "https://github.com/harshuCodes-git/job_mail_automation",
+      "description": "Automate cold-email job outreach from your own Gmail — tracks bounces, runs free on Render. Open source.",
+      "language": "JavaScript",
+      "topics": [],
+      "stars": 3,
+      "live": null,
+      "npm": null,
+      "featured": true,
+      "pushed_at": "2026-10-18T10:59:52Z"
+    },
+    {
+      "name": "padho-ai",
+      "url": "https://github.com/harshuCodes-git/padho-ai",
+      "description": "",
+      "language": "JavaScript",
+      "topics": [],
+      "stars": 0,
+      "live": "https://padho-ai.vercel.app",
+      "npm": null,
+      "featured": true,
+      "pushed_at": "2026-01-22T16:41:24Z"
+    },
+    {
+      "name": "Webify-AI",
+      "url": "https://github.com/harshuCodes-git/Webify-AI",
+      "description": "",
+      "language": "JavaScript",
+      "topics": [],
+      "stars": 0,
+      "live": "https://text-to-code-ten.vercel.app",
+      "npm": null,
+      "featured": true,
+      "pushed_at": "2025-04-01T08:05:32Z"
+    },
+    {
+      "name": "IntelliTrip",
+      "url": "https://github.com/harshuCodes-git/IntelliTrip",
+      "description": "",
+      "language": "JavaScript",
+      "topics": [],
+      "stars": 0,
+      "live": "https://ai-travel-app-eta.vercel.app",
+      "npm": null,
+      "featured": true,
+      "pushed_at": "2025-02-08T17:01:58Z"
+    },
+    {
+      "name": "MindCureAI",
+      "url": "https://github.com/harshuCodes-git/MindCureAI",
+      "description": "YouthCare is a mental health platform connecting students, parents, and doctors to promote well-being. It offers tools like assessments, expert consultations, and parental guidance to address student challenges. YouthCare fosters collaboration, early intervention, and personalized care to create a supportive environment for young minds to thrive.",
+      "language": "JavaScript",
+      "topics": [],
+      "stars": 0,
+      "live": null,
+      "npm": null,
+      "featured": true,
+      "pushed_at": "2025-01-08T10:23:17Z"
+    },
+    {
+      "name": "Purple-Box-CRM",
+      "url": "https://github.com/harshuCodes-git/Purple-Box-CRM",
+      "description": "🟪 Purple Box is an AI-powered CRM designed to centralize and streamline e-commerce operations. Our platform addresses the critical needs of modern online businesses, from customer support to client acquisition, offering seamless integration across multiple channels.",
+      "language": "TypeScript",
+      "topics": [],
+      "stars": 0,
+      "live": "https://purple-box-crm-xi.vercel.app/",
+      "npm": null,
+      "featured": true,
+      "pushed_at": "2024-12-31T10:02:45Z"
+    },
+    {
+      "name": "litwits",
+      "url": "https://github.com/harshuCodes-git/litwits",
+      "description": "",
+      "language": "JavaScript",
+      "topics": [],
+      "stars": 0,
+      "live": null,
+      "npm": null,
+      "featured": false,
+      "pushed_at": "2026-09-06T02:13:52Z"
+    },
+    {
+      "name": "health-project",
+      "url": "https://github.com/harshuCodes-git/health-project",
+      "description": "",
+      "language": "Go",
+      "topics": [],
+      "stars": 0,
+      "live": null,
+      "npm": null,
+      "featured": false,
+      "pushed_at": "2026-05-30T13:25:46Z"
+    },
+    {
+      "name": "golang-web-scraper",
+      "url": "https://github.com/harshuCodes-git/golang-web-scraper",
+      "description": "",
+      "language": "Go",
+      "topics": [],
+      "stars": 0,
+      "live": null,
+      "npm": null,
+      "featured": false,
+      "pushed_at": "2026-05-11T03:38:15Z"
+    },
+    {
+      "name": "learning_go",
+      "url": "https://github.com/harshuCodes-git/learning_go",
+      "description": "Learning go",
+      "language": "Go",
+      "topics": [],
+      "stars": 0,
+      "live": null,
+      "npm": null,
+      "featured": false,
+      "pushed_at": "2026-04-24T11:05:45Z"
+    }
+  ],
+  "private_activity": [],
+  "npm_packages": []
+}

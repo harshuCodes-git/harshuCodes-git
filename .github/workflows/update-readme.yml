@@ -2,7 +2,7 @@ name: Update README
 
 on:
   schedule:
-    - cron: "0 0 * * *" # Daily
+    - cron: "0 */6 * * *" # Every 6 hours
   workflow_dispatch:
   push:
     branches:
@@ -23,19 +23,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Regenerate contributions and repositories
+      - name: Regenerate profile data and README
         run: python3 .github/scripts/update_readme.py
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PROFILE_TOKEN: ${{ secrets.PROFILE_TOKEN }}
           GITHUB_USER: ${{ github.repository_owner }}
 
       - name: Commit changes
         run: |
-          if git diff --quiet README.md; then
+          git add README.md profile-data.json
+          if git diff --cached --quiet; then
             echo "README already up to date"
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898333+github-actions[bot]@users.noreply.github.com"
-          git commit -am "Update open source contributions"
+          git commit -m "Update profile data"
           git push

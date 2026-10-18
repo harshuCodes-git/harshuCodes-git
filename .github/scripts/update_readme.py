@@ -1,8 +1,14 @@
-"""Regenerate the auto-managed sections of README.md from the GitHub API.
+"""Regenerate profile-data.json and the auto-managed sections of README.md.
 
-Sections are delimited by marker comments, e.g.
-<!-- OSS-PRS:START --> ... <!-- OSS-PRS:END -->
-Everything between a pair of markers is overwritten on each run.
+profile-data.json is the single source of truth: the README sections below and
+the portfolio site both render from it. Sections are delimited by marker
+comments, e.g. <!-- OSS-PRS:START --> ... <!-- OSS-PRS:END -->, and everything
+between a pair of markers is overwritten on each run.
+
+Private repos are only visible when PROFILE_TOKEN (a fine-grained PAT) is set.
+Because profile-data.json is public, private repos are written according to
+config "private_repos": "anonymous" (language + date only), "named" (name and
+description, never a link) or "hidden".
 """
 
 import json
@@ -12,23 +18,36 @@ import sys
 import urllib.error
 import urllib.parse
 import urllib.request
+from datetime import datetime, timedelta, timezone
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 README = os.path.join(ROOT, "README.md")
+DATA = os.path.join(ROOT, "profile-data.json")
 CONFIG = os.path.join(ROOT, ".github", "readme-config.json")
 
 USER = os.environ.get("GITHUB_USER", "harshuCodes-git")
-TOKEN = os.environ.get("GITHUB_TOKEN", "")
+PROFILE_TOKEN = os.environ.get("PROFILE_TOKEN", "")
+TOKEN = PROFILE_TOKEN or os.environ.get("GITHUB_TOKEN", "")
 
 
 def api(url):
-    req = urllib.request.Request(url, headers={
-        "Accept": "application/vnd.github+json",
-        "User-Agent": f"{USER}-readme-updater",
-        **({"Authorization": f"Bearer {TOKEN}"} if TOKEN else {}),
-    })
-    with urllib.request.urlopen(req, timeout=30) as resp:
+    headers = {"Accept": "application/vnd.github+json", "User-Agent": f"{USER}-readme-updater"}
+    # Never send the GitHub token anywhere but GitHub.
+    if TOKEN and url.startswith("https://api.github.com/"):
+        headers["Authorization"] = f"Bearer {TOKEN}"
+    with urllib.request.urlopen(urllib.request.Request(url, headers=headers), timeout=30) as resp:
         return json.load(resp)
+
+
+def paginate(url):
+    items, page = [], 1
+    sep = "&" if "?" in url else "?"
+    while True:
+        batch = api(f"{url}{sep}per_page=100&page={page}")
+        items += batch
+        if len(batch) < 100:
+            return items
+        page += 1
 
 
 def cell(text):
@@ -36,7 +55,12 @@ def cell(text):
     return (text or "").replace("|", "\\|").replace("\n", " ").strip()
 
 
-def fetch_prs(config):
+def short(text, limit=100):
+    text = text or ""
+    return text[: limit - 3].rstrip() + "..." if len(text) > limit else text
+
+
+def fetch_contributions(config):
     query = urllib.parse.quote(f"is:pr author:{USER} -user:{USER}")
     items, page = [], 1
     while True:
@@ -53,94 +77,97 @@ def fetch_prs(config):
     prs = []
     for item in items:
         repo = item["repository_url"].split("/repos/", 1)[1]
-        merged = bool((item.get("pull_request") or {}).get("merged_at"))
+        merged_at = (item.get("pull_request") or {}).get("merged_at")
         # Closed without merging isn't a contribution worth showcasing.
-        if item["state"] == "closed" and not merged:
+        if item["state"] == "closed" and not merged_at:
             continue
         if item["html_url"] in excluded_prs or repo.lower() in excluded_repos:
             continue
         prs.append({
             "repo": repo,
-            "url": item["html_url"],
+            "repo_url": f"https://github.com/{repo}",
             "title": titles.get(item["html_url"], item["title"]),
-            "merged": merged,
-            "date": item["pull_request"].get("merged_at") or item["created_at"],
+            "url": item["html_url"],
+            "status": "merged" if merged_at else "open",
+            "date": merged_at or item["created_at"],
         })
 
-    prs.sort(key=lambda p: (p["merged"], p["date"]), reverse=True)
+    prs.sort(key=lambda p: (p["status"] == "merged", p["date"]), reverse=True)
     return prs[: config.get("max_prs", 15)]
 
 
-def render_prs(prs):
-    merged = "![merged](https://img.shields.io/badge/merged-8957e5?style=flat-square&logo=git-merge&logoColor=white)"
-    opened = "![open](https://img.shields.io/badge/open-2ea44f?style=flat-square&logo=git-pull-request&logoColor=white)"
-    lines = [
-        "| 📦 Project | 🛠️ Contribution | 📌 Status |",
-        "|-----------|-----------------|-----------|",
-    ]
-    for p in prs:
-        lines.append(
-            f"| [{cell(p['repo'])}](https://github.com/{p['repo']}) "
-            f"| [{cell(p['title'])}]({p['url']}) "
-            f"| {merged if p['merged'] else opened} |"
-        )
-    if not prs:
-        lines.append("| — | No contributions yet | — |")
-    return "\n".join(lines)
-
-
 def fetch_repos(config):
-    repos, page = [], 1
-    while True:
-        batch = api(f"https://api.github.com/users/{USER}/repos?type=owner&per_page=100&page={page}")
-        repos += batch
-        if len(batch) < 100:
-            break
-        page += 1
+    if PROFILE_TOKEN:
+        repos = paginate("https://api.github.com/user/repos?affiliation=owner&visibility=all")
+    else:
+        repos = paginate(f"https://api.github.com/users/{USER}/repos?type=owner")
 
     excluded = {r.lower() for r in config.get("exclude_repos", [])}
     patterns = [re.compile(p, re.I) for p in config.get("exclude_repo_patterns", [])]
-    repos = [
+    return [
         r for r in repos
-        if not r["fork"] and not r["archived"] and not r["private"]
+        if not r["fork"] and not r["archived"]
         and r["name"].lower() != USER.lower() and r["name"].lower() not in excluded
         and not any(p.search(r["name"]) for p in patterns)
     ]
-    # Featured repos first (in config order), then the most recently pushed.
-    featured = [f.lower() for f in config.get("featured_repos", [])]
-    rank = {name: i for i, name in enumerate(featured)}
-    repos.sort(key=lambda r: r["pushed_at"], reverse=True)
-    repos.sort(key=lambda r: rank.get(r["name"].lower(), len(rank)))
-    return repos[: config.get("max_repos", 10)]
 
 
-def render_repos(repos, config):
+def build_projects(repos, config):
     live_links = {k.lower(): v for k, v in config.get("live_links", {}).items()}
     npm_by_repo = {
         p["repo"].lower(): p["name"] for p in config.get("npm_packages", []) if p.get("repo")
     }
-    lines = [
-        "| 📁 Repository | 📝 Description | 💻 Language | 🔗 Links | ⭐ Stars |",
-        "|--------------|----------------|-------------|----------|---------|",
+    public = [r for r in repos if not r["private"]]
+
+    # Featured repos first (in config order), then the most recently pushed.
+    rank = {name.lower(): i for i, name in enumerate(config.get("featured_repos", []))}
+    public.sort(key=lambda r: r["pushed_at"], reverse=True)
+    public.sort(key=lambda r: rank.get(r["name"].lower(), len(rank)))
+
+    projects = []
+    for r in public[: config.get("max_repos", 10)]:
+        npm = npm_by_repo.get(r["name"].lower())
+        projects.append({
+            "name": r["name"],
+            "url": r["html_url"],
+            "description": r["description"] or "",
+            "language": r["language"],
+            "topics": r.get("topics", []),
+            "stars": r["stargazers_count"],
+            # The repo's "Website" field on GitHub wins; config fills in the rest.
+            "live": r.get("homepage") or live_links.get(r["name"].lower()),
+            "npm": f"https://www.npmjs.com/package/{npm}" if npm else None,
+            "featured": r["name"].lower() in rank,
+            "pushed_at": r["pushed_at"],
+        })
+    return projects
+
+
+def build_private_activity(repos, config):
+    settings = config.get("private_repos", {})
+    default = settings.get("default", "anonymous")
+    overrides = {k.lower(): v for k, v in settings.get("overrides", {}).items()}
+    cutoff = datetime.now(timezone.utc) - timedelta(days=config.get("private_activity_days", 60))
+
+    private = [
+        r for r in repos
+        if r["private"] and datetime.fromisoformat(r["pushed_at"].replace("Z", "+00:00")) >= cutoff
     ]
-    for r in repos:
-        desc = r["description"] or ""
-        if len(desc) > 100:
-            desc = desc[:97].rstrip() + "..."
-        # The repo's "Website" field on GitHub wins; config fills in the rest.
-        live = r.get("homepage") or live_links.get(r["name"].lower())
-        links = []
-        if live:
-            links.append(f"[🌐 Live]({live})")
-        if r["name"].lower() in npm_by_repo:
-            pkg = npm_by_repo[r["name"].lower()]
-            links.append(f"[📦 npm](https://www.npmjs.com/package/{pkg})")
-        lines.append(
-            f"| [{cell(r['name'])}]({r['html_url']}) | {cell(desc) or '—'} "
-            f"| {cell(r['language']) or '—'} | {' · '.join(links) or '—'} "
-            f"| {r['stargazers_count']} |"
-        )
-    return "\n".join(lines)
+    private.sort(key=lambda r: r["pushed_at"], reverse=True)
+
+    activity = []
+    for r in private:
+        mode = overrides.get(r["name"].lower(), default)
+        if mode == "hidden":
+            continue
+        named = mode == "named"
+        activity.append({
+            "name": r["name"] if named else None,
+            "description": (r["description"] or "") if named else None,
+            "language": r["language"],
+            "pushed_at": r["pushed_at"],
+        })
+    return activity[: config.get("max_private", 5)]
 
 
 def npm_published(name):
@@ -151,8 +178,8 @@ def npm_published(name):
         return False
 
 
-def render_npm(config):
-    packages = list(config.get("npm_packages", []))
+def build_npm(config):
+    packages = [dict(p) for p in config.get("npm_packages", [])]
     # Anything published under the npm account is picked up automatically.
     npm_user = config.get("npm_user")
     if npm_user:
@@ -163,26 +190,88 @@ def render_npm(config):
             if pkg["name"] not in known:
                 packages.append({"name": pkg["name"], "description": pkg.get("description", "")})
 
+    result = []
+    for p in packages:
+        result.append({
+            "name": p["name"],
+            "description": p.get("description", ""),
+            "url": f"https://www.npmjs.com/package/{p['name']}",
+            "repo_url": f"https://github.com/{USER}/{p['repo']}" if p.get("repo") else None,
+            "published": npm_published(p["name"]),
+        })
+    return result
+
+
+def render_prs(prs):
+    badges = {
+        "merged": "![merged](https://img.shields.io/badge/merged-8957e5?style=flat-square&logo=git-merge&logoColor=white)",
+        "open": "![open](https://img.shields.io/badge/open-2ea44f?style=flat-square&logo=git-pull-request&logoColor=white)",
+    }
+    lines = [
+        "| 📦 Project | 🛠️ Contribution | 📌 Status |",
+        "|-----------|-----------------|-----------|",
+    ]
+    for p in prs:
+        lines.append(
+            f"| [{cell(p['repo'])}]({p['repo_url']}) | [{cell(p['title'])}]({p['url']}) "
+            f"| {badges[p['status']]} |"
+        )
+    if not prs:
+        lines.append("| — | No contributions yet | — |")
+    return "\n".join(lines)
+
+
+def render_projects(projects):
+    lines = [
+        "| 📁 Repository | 📝 Description | 💻 Language | 🔗 Links | ⭐ Stars |",
+        "|--------------|----------------|-------------|----------|---------|",
+    ]
+    for p in projects:
+        links = []
+        if p["live"]:
+            links.append(f"[🌐 Live]({p['live']})")
+        if p["npm"]:
+            links.append(f"[📦 npm]({p['npm']})")
+        lines.append(
+            f"| [{cell(p['name'])}]({p['url']}) | {cell(short(p['description'])) or '—'} "
+            f"| {cell(p['language']) or '—'} | {' · '.join(links) or '—'} | {p['stars']} |"
+        )
+    return "\n".join(lines)
+
+
+def render_private(activity):
+    if not activity:
+        return "<p align=\"center\"><i>Nothing private in progress right now.</i></p>"
+    lines = [
+        "| 🔒 Project | 💻 Language | 🕒 Last Update |",
+        "|-----------|-------------|----------------|",
+    ]
+    for a in activity:
+        name = f"**{cell(a['name'])}**" if a["name"] else "Private project"
+        if a.get("description"):
+            name += f": {cell(short(a['description'], 80))}"
+        date = datetime.fromisoformat(a["pushed_at"].replace("Z", "+00:00")).strftime("%b %d, %Y")
+        lines.append(f"| {name} | {cell(a['language']) or '—'} | {date} |")
+    return "\n".join(lines)
+
+
+def render_npm(packages):
     if not packages:
         return "<p align=\"center\"><i>🚧 Packages coming soon...</i></p>"
-
     lines = [
         "| 📦 Package | 📝 Description | 🏷️ Version | 📥 Downloads |",
         "|-----------|----------------|------------|--------------|",
     ]
     for p in packages:
-        name = p["name"]
-        if npm_published(name):
-            version = f"![version](https://img.shields.io/npm/v/{name}?style=flat-square&color=cb3837)"
-            downloads = f"![downloads](https://img.shields.io/npm/dm/{name}?style=flat-square)"
+        if p["published"]:
+            version = f"![version](https://img.shields.io/npm/v/{p['name']}?style=flat-square&color=cb3837)"
+            downloads = f"![downloads](https://img.shields.io/npm/dm/{p['name']}?style=flat-square)"
         else:
             version = "![status](https://img.shields.io/badge/status-in%20development-orange?style=flat-square)"
             downloads = "—"
-        link = f"https://www.npmjs.com/package/{name}"
-        if p.get("repo"):
-            link = f"https://github.com/{USER}/{p['repo']}"
+        link = p["url"] if p["published"] else (p["repo_url"] or p["url"])
         lines.append(
-            f"| [{cell(name)}]({link}) | {cell(p.get('description')) or '—'} "
+            f"| [{cell(p['name'])}]({link}) | {cell(p['description']) or '—'} "
             f"| {version} | {downloads} |"
         )
     return "\n".join(lines)
@@ -198,13 +287,25 @@ def replace_section(text, name, content):
 def main():
     with open(CONFIG, encoding="utf-8") as f:
         config = json.load(f)
+
+    repos = fetch_repos(config)
+    data = {
+        "user": USER,
+        "contributions": fetch_contributions(config),
+        "projects": build_projects(repos, config),
+        "private_activity": build_private_activity(repos, config) if PROFILE_TOKEN else [],
+        "npm_packages": build_npm(config),
+    }
+    with open(DATA, "w", encoding="utf-8", newline="\n") as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+        f.write("\n")
+
     with open(README, encoding="utf-8") as f:
         text = f.read()
-
-    text = replace_section(text, "OSS-PRS", render_prs(fetch_prs(config)))
-    text = replace_section(text, "OSS-REPOS", render_repos(fetch_repos(config), config))
-    text = replace_section(text, "OSS-NPM", render_npm(config))
-
+    text = replace_section(text, "OSS-PRS", render_prs(data["contributions"]))
+    text = replace_section(text, "OSS-REPOS", render_projects(data["projects"]))
+    text = replace_section(text, "OSS-PRIVATE", render_private(data["private_activity"]))
+    text = replace_section(text, "OSS-NPM", render_npm(data["npm_packages"]))
     with open(README, "w", encoding="utf-8", newline="\n") as f:
         f.write(text)
 
