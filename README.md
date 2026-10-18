@@ -7,7 +7,7 @@
 </h1>
 
 <p align="center">
-  <img src="https://komarev.com/ghpvc/?username=harshucodes-git&label=Profile%20Views&color=0e75b6&style=for-the-badge" alt="Profile views" />
+  <img src="https://hits.sh/github.com/harshuCodes-git.svg?style=for-the-badge&label=Profile%20Views&color=0e75b6&labelColor=555555" alt="Profile views" />
   <img src="https://img.shields.io/github/followers/harshuCodes-git?label=Followers&style=for-the-badge&color=blue" alt="Followers" />
   <img src="https://img.shields.io/github/stars/harshuCodes-git?label=Stars&style=for-the-badge&color=yellow" alt="Stars" />
 </p>
