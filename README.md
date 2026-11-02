@@ -65,7 +65,6 @@ const harsh = {
 |-----------|-------------|----------------|
 | Private project | TypeScript | Oct 18, 2026 |
 | Private project | JavaScript | Oct 04, 2026 |
-| Private project | JavaScript | Sep 03, 2026 |
 <!-- OSS-PRIVATE:END -->
 
 ---
